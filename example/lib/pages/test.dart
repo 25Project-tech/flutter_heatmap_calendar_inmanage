@@ -33,6 +33,7 @@ class _DenemeState extends State<Deneme> {
       backgroundColor: const Color.fromARGB(255, 214, 214, 214),
       appBar: AppBar(),
       body: Column(
+        
         children:[
           
           HabitHeatmapYearsWidget(habitList:habitlist),

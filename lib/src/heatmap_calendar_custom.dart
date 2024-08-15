@@ -5,7 +5,7 @@ import './widget/heatmap_color_tip.dart';
 import './util/date_util.dart';
 import './util/widget_util.dart';
 
-class HeatMapCalendarCustom extends StatefulWidget {
+class HeatMapCalendarWeekly extends StatefulWidget {
   /// The datasets which fill blocks based on its value.
   final Map<DateTime, int>? datasets;
 
@@ -41,6 +41,9 @@ class HeatMapCalendarCustom extends StatefulWidget {
 
   /// The double value of week label's fontSize.
   final double? weekFontSize;
+  
+  ///
+  final TextStyle? textStyle;
 
   /// The text color value of week labels.
   final Color? weekTextColor;
@@ -71,12 +74,15 @@ class HeatMapCalendarCustom extends StatefulWidget {
   ///
   /// Paratmeter gives [DateTime] value of current month.
   final Function(DateTime)? onMonthChange;
-
+  final double? width;
+  final double? height;
   /// Show color tip which represents the color range at the below.
   ///
   /// Default value is true.
   final bool? showColorTip;
   final Function(DateTime)? onWeekChange;
+
+  final MainAxisAlignment? mainAxisAlignment;
   /// Widgets which shown at left and right side of colorTip.
   ///
   /// First value is the left side widget and second value is the right side widget.
@@ -90,7 +96,7 @@ class HeatMapCalendarCustom extends StatefulWidget {
   /// The double value of [HeatMapColorTip]'s tip container's size.
   final double? colorTipSize;
 
-  const HeatMapCalendarCustom({
+  const HeatMapCalendarWeekly({
     Key? key,
     required this.colorsets,
     this.colorMode = ColorMode.opacity,
@@ -113,14 +119,15 @@ class HeatMapCalendarCustom extends StatefulWidget {
     this.colorTipCount,
     this.colorTipSize, 
     this.endDate, 
-    this.onWeekChange,
+    this.onWeekChange, 
+    this.textStyle, this.width, this.height,  this.mainAxisAlignment,
   }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _HeatMapCalendar();
 }
 
-class _HeatMapCalendar extends State<HeatMapCalendarCustom> {
+class _HeatMapCalendar extends State<HeatMapCalendarWeekly> {
   // The DateTime value of first day of the current month.
   DateTime? _currentDate;
   
@@ -217,14 +224,18 @@ void changeWeek(int direction) {
   @override
   Widget build(BuildContext context) {
     return _intrinsicWidth(
-      child: 
+      child:
          Column(
           
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
            // _header(),
             _weekLabel(),
-            HeatMapCalendarPageCustom(
+            SizedBox(
+              width: widget.width,
+              height: widget.height,
+              child: 
+            HeatMapCalendarPageWeekly(
               
               baseDate: _currentDate ?? DateTime.now(),
               colorMode: widget.colorMode,
@@ -237,8 +248,10 @@ void changeWeek(int direction) {
               datasets: widget.datasets,
               colorsets: widget.colorsets,
               borderRadius: widget.borderRadius,
+              textStyle: widget.textStyle,
+              mainAxisAlignment: widget.mainAxisAlignment,
               
-            ),
+            )),
             if (widget.showColorTip == true)
               HeatMapColorTip(
                 

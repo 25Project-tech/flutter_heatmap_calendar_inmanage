@@ -211,6 +211,7 @@ class _HeatMapCalendar extends State<HeatMapCalendar> {
           _header(),
           _weekLabel(),
           HeatMapCalendarPage(
+            
             baseDate: _currentDate ?? DateTime.now(),
             colorMode: widget.colorMode,
             flexible: widget.flexible,

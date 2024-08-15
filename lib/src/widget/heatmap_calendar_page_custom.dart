@@ -5,7 +5,7 @@ import '../util/datasets_util.dart';
 import '../data/heatmap_color_mode.dart';
 
 
-class HeatMapCalendarPageCustom extends StatelessWidget {
+class HeatMapCalendarPageWeekly extends StatelessWidget {
   final DateTime baseDate;
   final EdgeInsets? margin;
   final bool? flexible;
@@ -17,8 +17,10 @@ class HeatMapCalendarPageCustom extends StatelessWidget {
   final ColorMode colorMode;
   final Map<int, Color>? colorsets;
   final double? borderRadius;
+  final TextStyle? textStyle;
+  final MainAxisAlignment? mainAxisAlignment;
 
-  const HeatMapCalendarPageCustom({Key? key, 
+  const HeatMapCalendarPageWeekly({Key? key, 
     required this.baseDate,
     this.margin,
     this.flexible,
@@ -30,6 +32,8 @@ class HeatMapCalendarPageCustom extends StatelessWidget {
     this.colorMode = ColorMode.opacity,
     this.colorsets,
     this.borderRadius,
+    this.textStyle,
+    this.mainAxisAlignment,
   }) : super(key: key);
 
   @override
@@ -44,7 +48,7 @@ class HeatMapCalendarPageCustom extends StatelessWidget {
     
     return Row(
       
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: mainAxisAlignment?? MainAxisAlignment.start,
       children: List.generate(7, (index) {
          
         DateTime currentDate = startDate.add(Duration(days: index));
@@ -59,7 +63,11 @@ class HeatMapCalendarPageCustom extends StatelessWidget {
           colorMode: colorMode,
           colorsets: colorsets,
           borderRadius: borderRadius,
+          textStyle:textStyle ,
            label: label,
+           margin: margin,
+
+           
         );
       }),
     );
@@ -77,6 +85,10 @@ class HeatMapCalendarBox extends StatelessWidget {
   final Map<int, Color>? colorsets;
   final double? borderRadius;
   final String label;
+  final EdgeInsets? margin;
+  final TextStyle? textStyle;
+  final MainAxisAlignment? mainAxisAlignment;
+
 
   const HeatMapCalendarBox({Key? key, 
     required this.date,
@@ -88,7 +100,11 @@ class HeatMapCalendarBox extends StatelessWidget {
     this.colorMode = ColorMode.opacity,
     this.colorsets,
     this.borderRadius,
-    required this.label,
+    required this.label,  
+    this.margin,
+    this.textStyle,
+     this.mainAxisAlignment,
+
   }) : super(key: key);
    
   @override
@@ -96,19 +112,19 @@ class HeatMapCalendarBox extends StatelessWidget {
 
     // Kutunun rengini ve diğer özelliklerini burada ayarlayın
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8), 
+      margin:  margin ??  const EdgeInsets.symmetric(horizontal: 4), 
       width: size ?? 40.0,
-      height: size ?? 40.0,
-      decoration: BoxDecoration(
+      height:size??  40.0,
+        decoration: BoxDecoration(
         color: colorsets?[value] ?? defaultColor ?? Colors.grey,
         borderRadius: BorderRadius.circular(borderRadius ?? 5.0),
-      ),
+      ),  
       child: Center(
         child: Text(
            label ,
-          style: TextStyle(
-            fontSize: fontSize ?? 14.0,
-            color: textColor ?? Colors.black,
+          style:textStyle ?? const TextStyle(
+            fontSize:14.0,
+            color: Colors.black,
           ),
         ),
       ),

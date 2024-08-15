@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
+import 'package:flutter_heatmap_calendar_inmanage/flutter_heatmap_calendar.dart';
 import 'package:flutter_heatmap_example/model/habit_list_model.dart';
 import 'package:flutter_heatmap_example/model/habit_model.dart';
+
 
 class HabitHeatmapCalendarWeeklyWidget extends StatefulWidget {
   final HabitListModel habitList;
@@ -90,8 +91,11 @@ class _HabitHeatmapCalendarWeeklyWidgetState extends State<HabitHeatmapCalendarW
     }
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: HeatMapCalendarCustom(
-        
+      child: HeatMapCalendarWeekly(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        textStyle: const TextStyle(fontSize: 10,color: Colors.blue),
+        width: 400,
+        margin: const EdgeInsets.symmetric(horizontal:1),
         showColorTip: false,
         colorMode: ColorMode.color,
         colorsets: const {

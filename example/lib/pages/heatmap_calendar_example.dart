@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
+import 'package:flutter_heatmap_calendar_inmanage/flutter_heatmap_calendar.dart';
+
 
 class HeatMapCalendarExample extends StatefulWidget {
   const HeatMapCalendarExample({Key? key}) : super(key: key);
@@ -58,7 +59,8 @@ class _HeatMapCalendarExample extends State<HeatMapCalendarExample> {
                 padding: const EdgeInsets.all(20),
 
                 // HeatMapCalendar
-                child: HeatMapCalendarCustom(
+                child: HeatMapCalendarWeekly(
+                  
                   flexible: true,
                   datasets: heatMapDatasets,
                   colorMode:
