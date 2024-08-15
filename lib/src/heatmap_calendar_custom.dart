@@ -230,7 +230,7 @@ void changeWeek(int direction) {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
            // _header(),
-            _weekLabel(),
+           // _weekLabel(),
             SizedBox(
               width: widget.width,
               height: widget.height,
