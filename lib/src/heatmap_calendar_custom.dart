@@ -96,6 +96,8 @@ class HeatMapCalendarWeekly extends StatefulWidget {
   /// The double value of [HeatMapColorTip]'s tip container's size.
   final double? colorTipSize;
 
+  final BoxBorder? border;
+
   const HeatMapCalendarWeekly({
     Key? key,
     required this.colorsets,
@@ -120,6 +122,7 @@ class HeatMapCalendarWeekly extends StatefulWidget {
     this.colorTipSize, 
     this.endDate, 
     this.onWeekChange, 
+    this.border,
     this.textStyle, this.width, this.height,  this.mainAxisAlignment,
   }) : super(key: key);
 
@@ -250,6 +253,7 @@ void changeWeek(int direction) {
               borderRadius: widget.borderRadius,
               textStyle: widget.textStyle,
               mainAxisAlignment: widget.mainAxisAlignment,
+              border: widget.border,
               
             )),
             if (widget.showColorTip == true)
@@ -261,6 +265,7 @@ void changeWeek(int direction) {
                 rightWidget: widget.colorTipHelper?[1],
                 containerCount: widget.colorTipCount,
                 size: widget.colorTipSize,
+              
               ),
           ],
         ),
