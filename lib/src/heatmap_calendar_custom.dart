@@ -97,6 +97,9 @@ class HeatMapCalendarWeekly extends StatefulWidget {
 
   final BoxBorder? border;
 
+    final BoxBorder? coloredBorder;
+  final TextStyle? coloredTextStyle;
+
   const HeatMapCalendarWeekly({
     Key? key,
     required this.colorsets,
@@ -122,6 +125,8 @@ class HeatMapCalendarWeekly extends StatefulWidget {
     this.endDate, 
     this.onWeekChange, 
     this.border,
+    this.coloredBorder,
+    this.coloredTextStyle,
     this.textStyle, this.width, this.height,  this.mainAxisAlignment,
   }) : super(key: key);
 
@@ -226,6 +231,8 @@ void changeWeek(int direction) {
               textStyle: widget.textStyle,
               mainAxisAlignment: widget.mainAxisAlignment,
               border: widget.border,
+              coloredBorder: widget.coloredBorder,
+              coloredTextStyle: widget.coloredTextStyle,
               
             )),
             if (widget.showColorTip == true)
