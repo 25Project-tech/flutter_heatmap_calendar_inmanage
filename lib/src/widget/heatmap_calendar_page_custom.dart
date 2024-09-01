@@ -61,9 +61,12 @@ class HeatMapCalendarPageWeekly extends StatelessWidget {
          
         DateTime currentDate = startDate.add(Duration(days: index));
         String label = DateUtil.Short_WEEK_LABEL[index+1];
+
+        int value = weeklyData[currentDate] ?? 0;
+
         return HeatMapCalendarBox(
           date: currentDate,
-          value: weeklyData[currentDate] ?? 0,
+          value: value,
           size: size,
           fontSize: fontSize,
           defaultColor: defaultColor,
@@ -71,10 +74,10 @@ class HeatMapCalendarPageWeekly extends StatelessWidget {
           colorMode: colorMode,
           colorsets: colorsets,
           borderRadius: borderRadius,
-          textStyle:weeklyData[currentDate]!= null ||weeklyData[currentDate] !=0 ?  coloredTextStyle:textStyle ,
+          textStyle:  value ==0 ?  textStyle: coloredTextStyle,
            label: label,
            margin: margin,
-           border: weeklyData[currentDate]!= null ||weeklyData[currentDate] !=0 ? coloredBorder :border,
+           border: value ==0?  border : coloredBorder,
 
            
         );
