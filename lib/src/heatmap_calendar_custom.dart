@@ -3,7 +3,6 @@ import './data/heatmap_color_mode.dart';
 import 'widget/heatmap_calendar_page_custom.dart';
 import './widget/heatmap_color_tip.dart';
 import './util/date_util.dart';
-import './util/widget_util.dart';
 
 class HeatMapCalendarWeekly extends StatefulWidget {
   /// The datasets which fill blocks based on its value.
@@ -190,33 +189,6 @@ void changeWeek(int direction) {
     );
   } */
 
-  Widget _weekLabel() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        
-          WidgetUtil.flexibleContainer(
-            widget.flexible ?? false,
-            false,
-            Container(
-              
-              margin: EdgeInsets.only(
-                  left: widget.margin?.left ?? 2,
-                  right: widget.margin?.right ?? 2),
-              width: widget.size ?? 42,
-              alignment: Alignment.center,
-              child: Text(
-                "",
-                style: TextStyle(
-                  fontSize: widget.weekFontSize ?? 12,
-                  color: widget.weekTextColor ?? const Color(0xFF758EA1),
-                ),
-              ),
-            ),
-          ),
-      ],
-    );
-  }
 
   /// Expand width dynamically if [flexible] is true.
   Widget _intrinsicWidth({

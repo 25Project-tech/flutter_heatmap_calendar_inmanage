@@ -20,6 +20,10 @@ class HeatMapCalendarPageWeekly extends StatelessWidget {
   final TextStyle? textStyle;
   final MainAxisAlignment? mainAxisAlignment;
   final BoxBorder ? border;
+  final BoxBorder? coloredBorder;
+  final TextStyle? coloredTextStyle;
+
+  
 
   const HeatMapCalendarPageWeekly({Key? key, 
     required this.baseDate,
@@ -35,7 +39,9 @@ class HeatMapCalendarPageWeekly extends StatelessWidget {
     this.borderRadius,
     this.textStyle,
     this.mainAxisAlignment,
-    this.border
+    this.border,
+    this.coloredBorder,
+    this.coloredTextStyle
   }) : super(key: key);
 
   @override
@@ -65,10 +71,10 @@ class HeatMapCalendarPageWeekly extends StatelessWidget {
           colorMode: colorMode,
           colorsets: colorsets,
           borderRadius: borderRadius,
-          textStyle:textStyle ,
+          textStyle:weeklyData[currentDate]!= null ||weeklyData[currentDate] !=0 ?  coloredTextStyle:textStyle ,
            label: label,
            margin: margin,
-           border: border,
+           border: weeklyData[currentDate]!= null ||weeklyData[currentDate] !=0 ? coloredBorder :border,
 
            
         );
